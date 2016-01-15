@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>RoleCall</title>
+    </head>
+    <body>
+        <div class="app">
+            <div class="intro">
+                <h1>Role Call</h1>
+                <div id="deviceready">
+                    <p class="event listening">Connecting to Device</p>
+                    <p class="event received">Where you at?</p>
+                </div>
+            </div>
+            <article class="row">
+                <img class="pic" src="img/chris.jpg">
+                <p class="name">Chris</p>
+                <a href="" class="text"><img class="contact-icon" src="img/sms.png"></a>
+                <a href="" class="call"><img class="contact-icon" src="img/phone.png"></a>
+                <img class="status" src="img/green.png">
+                <span class="arrow"></span>
+                <div class="clear"></div>
+            </article>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
