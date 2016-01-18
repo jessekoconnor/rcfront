@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <!--
@@ -11,14 +10,22 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> -->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
         <title>RoleCall</title>
     </head>
     <body>
+        <!-- FACEBOOK -->
+        <script type="text/javascript" src="js/facebook.js"></script>
+        <div
+          class="fb-like"
+          data-share="true"
+          data-width="450"
+          data-show-faces="true">
+        </div>
         <div class="app">
             <div class="intro">
                 <h1>Role Call</h1>
@@ -27,6 +34,8 @@
                     <p class="event received">Where you at?</p>
                 </div>
             </div>
+            
+
             <article class="row">
                 <img class="pic" src="img/chris.jpg">
                 <p class="name">Chris</p>
@@ -36,8 +45,27 @@
                 <span class="arrow"></span>
                 <div class="clear"></div>
             </article>
+
+
+            <div id="login-container">
+                <form>
+                    <input type="text" id= "username" placeholder="Username">
+                    <input type="text" id= "password" placeholder="Password">
+                    <input type="submit" id= "submit" value="Submit">
+                </form>
+            </div>
+
+
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
+
+
+
+
+
+
+
+

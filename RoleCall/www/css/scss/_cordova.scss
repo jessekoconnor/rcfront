@@ -2,12 +2,10 @@
     * {
         -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     }
-
     .clear {
         clear:both;
         float:none !important;
     }
-
     body {
         -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
         -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
@@ -32,7 +30,6 @@
         text-transform:uppercase;
         width:100%;
     }
-
     h1 {
         font-size:24px;
         font-weight:normal;
@@ -41,7 +38,6 @@
         padding:0px;
         text-align:center;
     }
-
     .event {
         border-radius:4px;
         -webkit-border-radius:4px;
@@ -52,72 +48,28 @@
         width: 180px;
         text-align: center;
     }
-
     .event.listening {
         background-color:#333333;
         display:block;
     }
-
     .event.received {
         background-color:#4B946A;
         display:none;
     }
-
     @keyframes fade {
         from { opacity: 1.0; }
         50% { opacity: 0.4; }
         to { opacity: 1.0; }
     }
-     
     @-webkit-keyframes fade {
         from { opacity: 1.0; }
         50% { opacity: 0.4; }
         to { opacity: 1.0; }
     }
-     
     .blink {
         animation:fade 3000ms infinite;
         -webkit-animation:fade 3000ms infinite;
     }
-
-
-/* row for individual friend */
-    article.row {
-        border-top:1px solid #fff;
-        border-bottom:1px solid #fff;
-        padding: 10px;
-    }
-    article.row * {
-        float:left;
-    }
-    article.row img.pic {
-        width:30px;
-        height:auto;
-        border-radius: 50%;
-        margin-right: 5%;
-        margin-top: 5px;
-    }
-    article.row p.name {
-        margin: 0 5% 0 0;
-        font-size: 14px;
-        font-weight: bold;
-        line-height: 40px;
-    }
-    article.row a {
-        margin-right: 2.5%;
-    }
-    article.row img.contact-icon {
-        width: 30px;
-        height: auto;
-        margin-top: 5px;
-    }
-    article.row img.status {
-        width: 20px;
-        height: auto;
-        margin: 10px 20px 0 0;
-        float: right;
-    }
-
 
 /* Portrait layout (default) */
     .app {
@@ -128,11 +80,7 @@
         margin-bottom: 40px;
     }
 
-
 /* Landscape layout (with min-width) */
     @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-        .app {
-           
-        }
+        .app {}
     }
-
