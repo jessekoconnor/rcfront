@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!--
         Customize this policy to fit your own app's needs. For more guidance, see:
             https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
@@ -16,30 +15,37 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
         <link rel="stylesheet" type="text/css" href="css/main.css">
-        <title>RoleCall</title>
+        <title>RoleCall App</title>
     </head>
     <body>
-        <!-- FACEBOOK -->
-        <script type="text/javascript" src="js/facebook.js"></script>
-        <div
-          class="fb-like"
-          data-share="true"
-          data-width="450"
-          data-show-faces="true">
-        </div>
         <div class="app">
-            <input type="submit" id="refreshButton" value="refresh">
-
-            <div class="intro">
-                <h1>Role Call</h1>
-                <div id="deviceready">
-                    <p class="event listening">Connecting to Device</p>
-                    <p class="event received">Where you at?</p>
-                </div>
-            </div>
             
+            <section class="top">
+                <div class="left33">
+                    <!-- Jesse testing, remove when done -->
+                    <input type="submit" id="refreshButton" value="JahFresh">
+                </div>
+                <div class="center33">
+                    <!-- top banner intro -->
+                    <div class="intro">
+                        <h1>Role Call</h1>
+                        <div id="deviceready">
+                            <p class="event listening">Connecting to Device</p>
+                            <p class="event received">Where you at?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right33">
+                    <!-- FB login window -->
+                    <iframe id="login-window" src="/login.html" scrolling="no"></iframe>
+                </div>
+                <div class="clear"></div>
+            </section>
 
-            <article class="row">
+           
+
+            <!-- example of a "user row" -->
+            <article class="user-row">
                 <img class="pic" src="img/chris.jpg">
                 <p class="name">Chris</p>
                 <a href="" class="text"><img class="contact-icon" src="img/sms.png"></a>
@@ -49,17 +55,8 @@
                 <div class="clear"></div>
             </article>
 
-
-            <div id="login-container">
-                <form>
-                    <input type="text" id= "username" placeholder="Username">
-                    <input type="text" id= "password" placeholder="Password">
-                    <input type="submit" id= "submit" value="Submit">
-                </form>
-            </div>
-
-
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>

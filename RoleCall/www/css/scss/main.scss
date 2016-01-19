@@ -56,5 +56,6 @@ sudo sass --sourcemap --watch css/scss/main.scss:css/main.css --style compressed
 /* IMPORTS
 ****************************************/
 	@import "_cordova.scss";
-	@import "_friends.scss";
+	@import "_global.scss";
 	@import "_login.scss";
+	@import "_user-row.scss";
