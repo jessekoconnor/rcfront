@@ -35,6 +35,10 @@ a {
 	}
 }
 
+a.nav-path-selected {
+	color: $copper;
+}
+
 input {
 	color: $slate;
 }
@@ -46,6 +50,11 @@ input {
 
 .left33, .center33, .right33 {
 	width: 33%;
+	float: left;
+}
+
+.left50, .right50 {
+	width: 50%;
 	float: left;
 }
 
@@ -73,4 +82,16 @@ input[type="submit"]{
 .slogan {
 	font-style: italic;
 	color: $white;
+}
+
+#utility {
+	margin-top: 50px;
+	img {
+		cursor: pointer;
+	}
+	.right50 {
+		img {
+			float: right;
+		}
+	}
 }
