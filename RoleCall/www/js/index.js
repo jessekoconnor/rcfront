@@ -48,16 +48,7 @@ var app = {
     }
 };
 
-$(document).ready(function() {
-    $('#refreshButton').click(function() {
-        httpGetAsync('http://localhost:5000/cool', function() {
-            console.log('***** REFRESH SUCCESS - YEWWWW *********')
-        });
-    });
-});
-
-function httpGetAsync(theUrl, callback)
-{
+function httpGetAsync(theUrl, callback){
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {  
             console.log('Refresh has responded with code: ', xmlHttp.status);
@@ -71,3 +62,14 @@ function httpGetAsync(theUrl, callback)
 }
 
 app.initialize();
+
+$(document).ready(function() {
+    $('#refreshButton').click(function() {
+        httpGetAsync('http://localhost:5000/cool', function() {
+            console.log('***** REFRESH SUCCESS - YEWWWW *********')
+        });
+    });
+    $('#btn-login-procede').click(function(){
+        window.location.href = "/default.html";
+    });
+});

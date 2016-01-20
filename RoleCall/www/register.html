@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/media-query.css">
+        <title>RoleCall App</title>
+    </head>
+    <body id="register">
+        <div class="app">
+            
+            <!-- area for testing -->
+            <section class="test">
+                <ul>
+                    <li><input type="submit" id="refreshButton" value="JahFresh"></li>
+                    <li><a href="/index.html">Login</a></li>
+                    <li><a href="/register.html">Register</a></li>
+                    <li><a href="/default.html">Default</a></li>
+                    <li><a href="/settings.html">Settings</a></li>
+                    <li><a href="/self.html">Self</a></li>
+                </ul>
+                <div class="clear"></div>
+            </section>
+            <!-- area for testing -->
+            
+            <section id="heading">
+                <h1>Register with RollCall</h1>
+                <p class="slogan">"What's up? Without asking."</p>
+            </section>
+
+            <section id="register">
+                <form>
+                    <input type="text" value="" placeholder="First Name">
+                    <input type="text" value="" placeholder="Last Name">
+                    <input type="text" value="" placeholder="Email">
+                    <input type="text" value="" placeholder="Phone">
+                    <input type="submit" value="Register">
+                    <div class="clear"></div>
+                </form>
+            </section>
+
+
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

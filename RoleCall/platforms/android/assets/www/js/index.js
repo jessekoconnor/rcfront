@@ -48,4 +48,26 @@ var app = {
     }
 };
 
+$(document).ready(function() {
+    $('#refreshButton').click(function() {
+        httpGetAsync('http://localhost:5000/cool', function() {
+            console.log('***** REFRESH SUCCESS - YEWWWW *********')
+        });
+    });
+});
+
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {  
+            console.log('Refresh has responded with code: ', xmlHttp.status);
+
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
 app.initialize();

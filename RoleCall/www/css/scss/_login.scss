@@ -1,12 +1,6 @@
-iframe#login-window {
-	width: 300px;
-	height: 125px;
-	display: block;
-	border: none;
-	margin: 0 auto;
-	input {
-        float: left;
-        margin-bottom: 20px;
-        width: 100%;
-    }
+#login{
+	text-align: center;
+	span.first_name {
+		color: lighten($copper, 20%);
+	}
 }

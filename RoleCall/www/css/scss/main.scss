@@ -4,15 +4,25 @@ Date:
 *************************************/
 
 /************************************ 
-Compiled To: ../css/main.css
+Compiled To: 
+../css/main.css
 
-example:
-sudo sass --sourcemap --watch css/scss/main.scss:css/main.css --style compressed
+Compiling Directions:
+cd rcfront/RoleCall/www/css
+sudo sass --sourcemap --watch scss/main.scss:main.css --style compressed
 *************************************/
 
 /* VARIABLES
 ****************************************/
 	$headings: #000;
+	$slate: #4d4d4d;
+	$white: #ccc;
+
+	$blue: #3e475b;
+	$purple: #47405E;
+	$gold: #888058;
+	$copper: #887858;
+	
 		
 /* UTILITY CLASSES / MIXINS
 *************************************/
@@ -55,7 +65,9 @@ sudo sass --sourcemap --watch css/scss/main.scss:css/main.css --style compressed
 		
 /* IMPORTS
 ****************************************/
+	@import "_normalize.scss";
 	@import "_cordova.scss";
 	@import "_global.scss";
 	@import "_login.scss";
 	@import "_user-row.scss";
+	@import "_register.scss";
