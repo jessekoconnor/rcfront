@@ -1,3 +1,7 @@
+// remember the user
+var user;
+
+
 // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
         if (response.status === 'connected') {
@@ -49,8 +53,10 @@
             console.log(JSON.stringify(response));
             console.log('Successful login for: ' + response.first_name);
             $('#logged-in .first_name').text(response.first_name);
+            user = response;
         });
     }
+
 
 // testing buttons click functions
     $(document).ready(function(){
@@ -59,6 +65,10 @@
             checkLoginState();
             fbAPI();
         });
+        // check if user is logged in
+        $('#store-user').click(function(){
+            makeCorsRequest('http://rollcall.local:5000/storeUser', user);
+        });
         // log user out
         $('#logout').click(function(){
             FB.logout(function(response) {
@@ -66,3 +76,58 @@
             });
         });
     });
+
+
+
+
+////////////////////////////
+// Cross origin request shit
+////////////////////////////
+
+// Create the XHR object.
+function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+        // XHR for Chrome/Firefox/Opera/Safari.
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+        // XDomainRequest for IE.
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        // CORS not supported.
+        xhr = null;
+    }
+    return xhr;
+}
+
+// Helper method to parse the title tag from the response.
+function getTitle(text) {
+    return text.match('<title>(.*)?</title>')[1];
+}
+
+// Make the actual CORS request.
+function makeCorsRequest(url, body) {
+    // All HTML5 Rocks properties support CORS.
+
+    var xhr = createCORSRequest('POST', url);
+    if (!xhr) {
+        alert('CORS not supported');
+        return;
+    }
+
+    // Response handlers.
+    xhr.onload = function() {
+        var text = xhr.responseText;
+        //var title = getTitle(text);
+        alert('Response from CORS request to ' + url + ': ' + text);
+    };
+
+    xhr.onerror = function() {
+        alert('Woops, there was an error making the request.');
+    };
+
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(JSON.stringify(body));
+}
