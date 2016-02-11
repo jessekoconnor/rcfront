@@ -48,16 +48,7 @@ var app = {
     }
 };
 
-$(document).ready(function() {
-    $('#refreshButton').click(function() {
-        httpGetAsync('http://localhost:5000/cool', function() {
-            console.log('***** REFRESH SUCCESS - YEWWWW *********')
-        });
-    });
-});
-
-function httpGetAsync(theUrl, callback)
-{
+function httpGetAsync(theUrl, callback){
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {  
             console.log('Refresh has responded with code: ', xmlHttp.status);
@@ -71,3 +62,83 @@ function httpGetAsync(theUrl, callback)
 }
 
 app.initialize();
+
+$(document).ready(function() {
+
+    // Jahsee's refresh button
+    $('#refreshButton').click(function() {
+        httpGetAsync('http://localhost:5000/cool', function() {
+            console.log('***** REFRESH SUCCESS - YEWWWW *********')
+        });
+    });
+
+    // highlight current nav item
+    $('.test a').each(function(){
+        var href = $(this).attr('href');
+        var url = window.location.href;
+        if (url.indexOf(href) > -1) {
+            $(this).addClass('nav-path-selected');
+        }
+    });
+
+    // button clicks
+    // $(document).on('click', '.category a', function(e){
+    //     window.location.href = "/default.html";
+    // });
+    $(document).on('click', '#settings-icon', function(e){
+        e.preventDefault();
+        window.location.href = "/settings.html";
+    });
+    $(document).on('click', '#self-icon', function(e){
+        e.preventDefault();
+        window.location.href = "/self.html";
+    });
+    $(document).on('click', '#btn-login-procede', function(e){
+        e.preventDefault();
+        window.location.href = "/default.html";
+    });
+
+
+    // temp nav links
+    $(document).on('click', '#login-link', function(e){
+        e.preventDefault();
+        $("body").load("/index.html");
+    });
+    $(document).on('click', '#register-link', function(e){
+        e.preventDefault();
+        window.location = "/register.html";
+    });
+    $(document).on('click', '#default-link', function(e){
+        e.preventDefault();
+        window.location = "/default.html";
+    });
+    $(document).on('click', '#settings-link', function(e){
+        e.preventDefault();
+        window.location = "/settings.html";
+    });
+    $(document).on('click', '#self-link', function(e){
+        e.preventDefault();
+        window.location = "/self.html";
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

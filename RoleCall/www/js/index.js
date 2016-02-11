@@ -82,13 +82,63 @@ $(document).ready(function() {
     });
 
     // button clicks
-    $('#btn-login-procede').click(function(){
-        window.location.href = "/default.html";
-    });
-    $('#settings-icon').click(function(){
+    // $(document).on('click', '.category a', function(e){
+    //     window.location.href = "/default.html";
+    // });
+    $(document).on('click', '#settings-icon', function(e){
+        e.preventDefault();
         window.location.href = "/settings.html";
     });
-    $('#self-icon').click(function(){
+    $(document).on('click', '#self-icon', function(e){
+        e.preventDefault();
         window.location.href = "/self.html";
     });
+    $(document).on('click', '#btn-login-procede', function(e){
+        e.preventDefault();
+        window.location.href = "/default.html";
+    });
+
+
+    // temp nav links
+    $(document).on('click', '#login-link', function(e){
+        e.preventDefault();
+        $("body").load("/index.html");
+    });
+    $(document).on('click', '#register-link', function(e){
+        e.preventDefault();
+        window.location = "/register.html";
+    });
+    $(document).on('click', '#default-link', function(e){
+        e.preventDefault();
+        window.location = "/default.html";
+    });
+    $(document).on('click', '#settings-link', function(e){
+        e.preventDefault();
+        window.location = "/settings.html";
+    });
+    $(document).on('click', '#self-link', function(e){
+        e.preventDefault();
+        window.location = "/self.html";
+    });
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
