@@ -48,16 +48,7 @@ var app = {
     }
 };
 
-$(document).ready(function() {
-    $('#refreshButton').click(function() {
-        httpGetAsync('http://localhost:5000/cool', function() {
-            console.log('***** REFRESH SUCCESS - YEWWWW *********')
-        });
-    });
-});
-
-function httpGetAsync(theUrl, callback)
-{
+function httpGetAsync(theUrl, callback){
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {  
             console.log('Refresh has responded with code: ', xmlHttp.status);
@@ -71,3 +62,33 @@ function httpGetAsync(theUrl, callback)
 }
 
 app.initialize();
+
+$(document).ready(function() {
+
+    // Jahsee's refresh button
+    $('#refreshButton').click(function() {
+        httpGetAsync('http://localhost:5000/cool', function() {
+            console.log('***** REFRESH SUCCESS - YEWWWW *********')
+        });
+    });
+
+    // highlight current nav item
+    $('.test a').each(function(){
+        var href = $(this).attr('href');
+        var url = window.location.href;
+        if (url.indexOf(href) > -1) {
+            $(this).addClass('nav-path-selected');
+        }
+    });
+
+    // button clicks
+    $('#btn-login-procede').click(function(){
+        window.location.href = "/default.html";
+    });
+    $('#settings-icon').click(function(){
+        window.location.href = "/settings.html";
+    });
+    $('#self-icon').click(function(){
+        window.location.href = "/self.html";
+    });
+});
