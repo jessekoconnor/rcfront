@@ -18,10 +18,11 @@ import React, {
 
 
 /**
- * Url to grab the mock friends object from our backend
- * @type {string}
+ * Urls that are endpoints on the backend
  */
-var REQUEST_URL = 'http://localhost:5000/friends';
+var BACKEND_URL = 'http://localhost:5000/',
+    MOCK_FRIENDS_URL = BACKEND_URL + 'mockFriends',
+    ALL_USERS_ENDPOINT = BACKEND_URL + 'getAllFriends';
 
 /**
  * RollCall front end
@@ -46,7 +47,7 @@ class rcfront extends Component {
    * Handles the http get request, puts the result into the state
    */
   fetchData() {
-    fetch(REQUEST_URL)
+    fetch(ALL_USERS_ENDPOINT)
         .then((response) => response.json())
         .then((responseData) => {
           this.setState({
@@ -102,7 +103,7 @@ class rcfront extends Component {
           </View>
           <View style={styles.rightContainer}>
             <Text style={styles.name}>{friend.name}</Text>
-            <Text style={styles.plansTonight}>{friend.plansTonight}</Text>
+            <Text style={styles.plansTonight}>{friend.schedule}</Text>
 
           </View>
         </View>
@@ -120,8 +121,8 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    borderStyle: 'solid',
-    borderColor: 'black'
+    borderWidth: 2,
+    borderColor: '#000000'
   },
   rightContainer: {
     flex: 1,
