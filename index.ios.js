@@ -12,6 +12,7 @@ import React, {
     Image,
     ListView,
     StyleSheet,
+    TextInput,
     Text,
     View,
 } from 'react-native';
@@ -66,7 +67,18 @@ class rcfront extends Component {
     if (!this.state.loaded) {
       return this.renderLoadingView();
     }
-
+    if (!this.state.loggedIn) {
+      return (
+        <View>
+          <View style={styles.listView}>
+            <Text>Log in ya bitch.</Text>
+          </View>
+          <View style={styles.listView}>
+            <TextInput style={styles.input} type="TextInput" name="someName" />
+          </View>
+        </View>
+    );
+    }
     return (
         <ListView
             dataSource={this.state.dataSource}
@@ -83,9 +95,7 @@ class rcfront extends Component {
   renderLoadingView() {
     return (
         <View style={styles.container}>
-          <Text>
-            Loading friends...
-          </Text>
+          <Text>Loading friends...</Text>
         </View>
     );
   }
@@ -99,12 +109,17 @@ class rcfront extends Component {
     return (
         <View style={styles.container}>
           <View>
+            <Image
+              style={styles.thumbnail}
+              source={{uri: 'https://scontent-lga3-1.xx.fbcdn.net/hphotos-xat1/v/t1.0-9/971626_10153295432192680_895592458353613198_n.jpg?oh=5d2b7e301e7b692bf84f17fe9b389a92&oe=574F91E2'}}
+            />
+          </View>
+          <View>
             <Text style={styles.thumbnail}>{friend.mood}</Text>
           </View>
           <View style={styles.rightContainer}>
             <Text style={styles.name}>{friend.name}</Text>
             <Text style={styles.plansTonight}>{friend.schedule}</Text>
-
           </View>
         </View>
     );
@@ -143,6 +158,11 @@ var styles = StyleSheet.create({
     paddingTop: 20,
     backgroundColor: '#F5FCFF',
   },
+  input: {
+    height: 50,
+    borderWidth: 2,
+    borderColor: '#00FF00',
+  }
 });
 
 AppRegistry.registerComponent('rcfront', () => rcfront);
