@@ -83,15 +83,23 @@ var Button = require('react-native-button');
             />
           </View>
           <View style={styles.listView}>
-            <TextInput style={styles.input} type="TextInput" placeholder="Email" name="email" />
+            <TextInput style={styles.input} type="TextInput" placeholder="Email" name="email"
+                       onChangeText={(email) => this.setState({email: email})}
+                       value={this.state.email}
+            />
+
           </View>
           <View style={styles.listView}>
-            <TextInput style={styles.input} type="TextInput" placeholder="Password" name="Password" />
+            <TextInput style={styles.input} type="TextInput" placeholder="Password" name="Password"
+                       onChangeText={(password) => this.setState({password: password})}
+                       value={this.state.password}
+            />
+
           </View>
 
           <Button
             style={styles.button}
-            onPress={this.handlePress}
+            onPress={this.handlePress(this.state)}
           >
             Submit
           </Button>
@@ -110,10 +118,10 @@ var Button = require('react-native-button');
   }
 
   // handle register submit button
-    handlePress(username) {
+    handlePress(state) {
       
       // console.log(username);
-      console.log('btn');
+      console.log('handlePress: ', state);
     }
 
 
