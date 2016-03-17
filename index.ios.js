@@ -6,6 +6,7 @@
  * Note: all IOS functionality is in this 1 file, which is okay for now becuase the program is so small.
  *       As it grown we need a solid directory structure.
  */
+
 import React, {
     AppRegistry,
     Component,
@@ -17,68 +18,88 @@ import React, {
     View,
 } from 'react-native';
 
+var Button = require('react-native-button');
 
-/**
- * Urls that are endpoints on the backend
- */
-var BACKEND_URL = 'http://localhost:5000/',
-    MOCK_FRIENDS_URL = BACKEND_URL + 'mockFriends',
-    ALL_USERS_ENDPOINT = BACKEND_URL + 'getAllFriends';
 
-/**
- * RollCall front end
- * Displays the rcfront client
- */
-class rcfront extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2,
-      }),
-      loaded: false,
-    };
-  }
+// Endpoints
+  var BACKEND_URL = 'http://localhost:5000/',
+      MOCK_FRIENDS_URL = BACKEND_URL + 'mockFriends',
+      ALL_USERS_ENDPOINT = BACKEND_URL + 'getAllFriends';
 
-  componentDidMount() {
-    this.fetchData();
-  }
 
-  /**
-   * Handles the http get request, puts the result into the state
-   */
+// Displays the rcfront client
+  class rcfront extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        dataSource: new ListView.DataSource({
+          rowHasChanged: (row1, row2) => row1 !== row2,
+        }),
+        loaded: false,
+      };
+    }
+
+    componentDidMount() {
+      this.fetchData();
+    }
+
+// Handles the http get request, puts the result into the state
   fetchData() {
     fetch(ALL_USERS_ENDPOINT)
-        .then((response) => response.json())
-        .then((responseData) => {
-          this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(responseData),
-            loaded: true,
-          });
-        })
-        .done();
+      .then((response) => response.json())
+      .then((responseData) => {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(responseData),
+        loaded: true,
+      });
+      })
+    .done();
   }
 
-  /**
-   * This function is the render function for rcfront. This is the views entrypoint.
-   * @returns {XML}
-     */
+// This function is the render function for rcfront. This is the views entrypoint.
   render() {
+    
     if (!this.state.loaded) {
       return this.renderLoadingView();
     }
+
     if (!this.state.loggedIn) {
       return (
-        <View>
+        <View style={styles.container}>
+          
           <View style={styles.listView}>
-            <Text>Log in ya bitch.</Text>
+            <Text style={styles.heading}>Create Account</Text>
+          </View>
+         
+          <View style={styles.listView}>
+            <TextInput 
+              style={styles.input} 
+              type="TextInput" 
+              placeholder="Username" 
+              name="username" 
+              ref="username" 
+              onChangeText={(username) => this.setState({username: username})}
+              value={this.state.username}
+            />
           </View>
           <View style={styles.listView}>
-            <TextInput style={styles.input} type="TextInput" name="someName" />
+            <TextInput style={styles.input} type="TextInput" placeholder="Email" name="email" />
           </View>
+          <View style={styles.listView}>
+            <TextInput style={styles.input} type="TextInput" placeholder="Password" name="Password" />
+          </View>
+
+          <Button
+            style={styles.button}
+            onPress={this.handlePress}
+          >
+            Submit
+          </Button>
+
         </View>
-    );
+      );
     }
+
     return (
         <ListView
             dataSource={this.state.dataSource}
@@ -87,6 +108,14 @@ class rcfront extends Component {
         />
     );
   }
+
+  // handle register submit button
+    handlePress(username) {
+      
+      // console.log(username);
+      console.log('btn');
+    }
+
 
   /**
    * Displayed while network request is loading
@@ -132,12 +161,27 @@ class rcfront extends Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'column',
+    backgroundColor: '#384d5e',
+  },
+  listView: {
+    paddingTop: 20,
+  },
+  heading: {
+    fontSize: 24,
+    textAlign: 'center',
+    marginTop: 20,
+    color: '#ceb78b',
+  },
+  input: {
+    flex: 1,
+    height: 50,
+    marginLeft: 20,
+    marginRight: 20,
     borderWidth: 2,
-    borderColor: '#000000'
+    paddingLeft: 20,
+    borderColor: '#DDD',
+    backgroundColor: '#FFF',
   },
   rightContainer: {
     flex: 1,
@@ -154,14 +198,21 @@ var styles = StyleSheet.create({
     width: 53,
     height: 81,
   },
-  listView: {
+  anchor: {
+    paddingLeft: 20,
     paddingTop: 20,
-    backgroundColor: '#F5FCFF',
   },
-  input: {
-    height: 50,
-    borderWidth: 2,
-    borderColor: '#00FF00',
+  button: {
+    flex: 1,
+    marginTop: 40,
+    backgroundColor: '#ceb78b',
+    marginLeft: 100,
+    marginRight: 100,
+    borderRadius: 3,
+    lineHeight: 22,
+    height: 30,
+    color: '#47405D',
+    fontSize: 12,
   }
 });
 
